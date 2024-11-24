@@ -84,8 +84,7 @@ public class Primitiva{
 		}
 		return listaboletos;
 	}
-	
-	public static int comprobarboleto (int [][]listaboletos, int [] premiado, int indice){
+		public static int comprobarboleto (int [][]listaboletos, int [] premiado, int indice){
 		int contador = 0;
 			for (int j = 0 ; j<6; j++) {
 				for (int k = 0; k<6; k++) {
