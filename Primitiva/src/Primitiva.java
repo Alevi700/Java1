@@ -1,24 +1,9 @@
 import java.util.Scanner;
 public class Primitiva{
+	static int apuesta;
 	public static void main (String [] args) {
-		int dinero,apuesta;
-		Scanner sc = new Scanner (System.in);
-		System.out.print("Introduzca el importe (Cada apuesta vale 1 €)");
-		dinero = sc.nextInt();
 		
-		System.out.print("¿Cuántas apuestas desea realizar?");
-		apuesta = sc.nextInt();
-		
-		if (dinero == apuesta) {
-			System.out.print("Usted ha realizado " +  apuesta + " apuestas");
-		}
-		else if (apuesta <= 0 || apuesta > dinero) {
-			System.out.print("Apuesta no válida");
-			return;
-		}
-		else {
-			System.out.print("Usted ha realizado " + apuesta + " apuestas, le corresponde " + (dinero - apuesta) + "€ de cambio" );
-		}
+		entrada();
 		
 		
 		int [] boleto = new int [6];
@@ -27,7 +12,7 @@ public class Primitiva{
 
 		for(int i = 0; i<apuesta; i++) {
 			boleto = generarboleto();
-			listaboletos = guardarboleto(boleto,listaboletos,apuesta,i);
+			listaboletos = guardarboleto(boleto,listaboletos,i);
 		}
 		
 		System.out.println();
@@ -44,7 +29,7 @@ public class Primitiva{
 		premiado = generarboleto();
 		int aciertos;
 		for (int indice = 0; indice<apuesta; indice++) {
-		aciertos = comprobarboleto(listaboletos, premiado, apuesta, indice);
+		aciertos = comprobarboleto(listaboletos, premiado, indice);
 		System.out.println("Su boleto " + (indice+1) + " tiene " + aciertos + "aciertos");
 		if (aciertos >= 3) {
 		switch(aciertos){
@@ -75,7 +60,26 @@ public class Primitiva{
 		}
 		}
 	}
-	
+	public static void entrada() {
+		int dinero;
+		Scanner sc = new Scanner (System.in);
+		System.out.print("Introduzca el importe (Cada apuesta vale 1 €)");
+		dinero = sc.nextInt();
+		
+		System.out.print("¿Cuántas apuestas desea realizar?");
+		apuesta = sc.nextInt();
+		
+		if (dinero == apuesta) {
+			System.out.print("Usted ha realizado " +  apuesta + " apuestas");
+		}
+		else if (apuesta <= 0 || apuesta > dinero) {
+			System.out.print("Apuesta no válida");
+			System.exit(0);
+		}
+		else {
+			System.out.print("Usted ha realizado " + apuesta + " apuestas, le corresponde " + (dinero - apuesta) + "€ de cambio" );
+		}
+	}
 	public static int [] generarboleto() {
 		int [] b = new int [6];
 		boolean valido = true;
@@ -101,17 +105,15 @@ public class Primitiva{
 	}
 	
 	
-	public static int[][] guardarboleto(int [] guardar, int [] [] listaboletos , int apuesta, int indice){
+	public static int[][] guardarboleto(int [] guardar, int [] [] listaboletos , int indice){
 		for (int i = 0; i<6; i++) {
 			listaboletos [indice][i] = guardar[i];
 		}
 		return listaboletos;
 	}
 	
-	public static int comprobarboleto (int [][]listaboletos, int [] premiado, int apuesta, int indice){
+	public static int comprobarboleto (int [][]listaboletos, int [] premiado, int indice){
 		int contador = 0;
-		for (int i = 0; i<apuesta; i++) {
-			contador = 0;
 			for (int j = 0 ; j<6; j++) {
 				for (int k = 0; k<6; k++) {
 				if (listaboletos[indice][j] == premiado [k]) {
@@ -119,8 +121,7 @@ public class Primitiva{
 				}
 				}
 				
-			} break;			
-		   }
+			} 			
 		return contador;
 	}
 	
