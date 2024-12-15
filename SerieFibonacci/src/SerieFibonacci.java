@@ -6,7 +6,7 @@ public class SerieFibonacci {
 		n = entrada(n);
 		long p = 0;
 		long s = 1;		
-		int contador = 2;
+		int contador = 3;
 		long resultado = calculo(n,p,s,contador);
 		System.out.print("El termino " + n + "de la serie de Fibomacci es: " + resultado);
 
