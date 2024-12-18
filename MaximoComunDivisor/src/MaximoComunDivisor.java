@@ -9,7 +9,7 @@ public class MaximoComunDivisor {
 	}
 	public static void entrada() {
 		
-		Scanner sc = new Scanner (System.in);
+		Scanner sc = new Scanner (System.in); //entrada
 		System.out.println("Introduzca 2 numeros n y m tal que n<m");
 		System.out.println("Introduzca numero n");
 		n = sc.nextInt();
@@ -18,19 +18,19 @@ public class MaximoComunDivisor {
 		sc.close();
 		if (n>m) {
 			System.out.print("Numeros no validos");
-			System.exit(0);;
+			System.exit(0);
 		}
 
 	}
     public static int calculo() {
     	double resto = m%n;
-    	if (resto == 0) {
+    	if (resto == 0) { //n es el MCD
     		return (int) n;
     	}
     	else {
     		m = (int) n;
     		n = (resto);
-    		calculo();
+    		calculo(); //recursividad
     	}
     	return (int) n;
     }
