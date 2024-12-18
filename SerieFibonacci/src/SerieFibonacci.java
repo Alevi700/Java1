@@ -11,6 +11,7 @@ public class SerieFibonacci {
 		long resultado = calculo(n,p,s,contador);
 		System.out.printf("El termino " + n + " de la serie de Fibonacci es: " + resultado);
 
+		
 
 	}
 	public static int entrada(int n) {
